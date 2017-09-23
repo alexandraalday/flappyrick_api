@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+
+  resources :scores
+  
   resources :users do
+  	resources :scores, only: [:create]
   	collection do
   		post '/login', to: 'users#login'
   	end
